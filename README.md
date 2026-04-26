@@ -25,8 +25,6 @@ Copy `.env.example` to `.env` and fill in your API keys.
 | `search_agent.py` | Web search agent (text / audio file / mic) |
 | `invoice_agent.py` | PDF invoice extractor |
 | `invoice_agent_temporal.py` | Invoice extractor with Temporal workflow orchestration |
-| `generate_invoices.py` | Generates 200 dummy PDF invoices |
-| `db_viewer.py` | View data saved in `agents.db` |
 | `db/` | Shared SQLite layer used by all agents |
 
 ---

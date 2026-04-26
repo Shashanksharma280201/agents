@@ -74,17 +74,6 @@ Temporal UI → http://localhost:8233
 python3 generate_invoices.py
 # creates invoice/dummy_invoice_001.pdf ... dummy_invoice_200.pdf
 ```
-
-### View DB data
-```bash
-python3 db_viewer.py                      # summary
-python3 db_viewer.py search               # search agent runs
-python3 db_viewer.py invoice              # invoice records
-python3 db_viewer.py invoice --detail     # full invoice fields
-python3 db_viewer.py invoice --id 3       # single record
-python3 db_viewer.py stats                # totals and averages
-```
-
 ---
 
 ## Switching LLM provider

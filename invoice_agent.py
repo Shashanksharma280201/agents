@@ -165,7 +165,7 @@ def should_retry(state: InvoiceState) -> Literal["extract", "save"]:
 
 # ─── Graph ────────────────────────────────────────────────────────────────────
 
-def build_graph() -> StateGraph:
+def build_graph():
     graph = StateGraph(InvoiceState)
     graph.add_node("read_pdf", read_pdf_node)
     graph.add_node("extract",  extract_node)
@@ -176,13 +176,17 @@ def build_graph() -> StateGraph:
     graph.add_edge("extract",  "validate")
     graph.add_conditional_edges("validate", should_retry)
     graph.add_edge("save",     END)
-    return graph.compile()
+    workflow =  graph.compile()
+    with open ("graph.png", "wb") as f:
+        f.write(workflow.get_graph().draw_mermaid_png()) 
+    return workflow
 
 
 # ─── Main ─────────────────────────────────────────────────────────────────────
 
 def extract_invoice(file_path: str, verbose: bool = True) -> dict:
     app = build_graph()
+    
     state: InvoiceState = {
         "file_path": file_path,
         "raw_text": "",
